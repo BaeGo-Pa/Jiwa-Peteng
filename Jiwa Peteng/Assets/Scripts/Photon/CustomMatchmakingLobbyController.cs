@@ -100,7 +100,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     void ListRoom(RoomInfo room)
     {
-        if(room.IsOpen && room.IsVisible)
+        if(room.IsVisible)
         {
             GameObject tempListing = Instantiate(roomListingPrefab, roomContainer);
             ConnectMultiRoomButton tempButton = tempListing.GetComponent<ConnectMultiRoomButton>();
@@ -124,12 +124,16 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         {
             roomSize = 0;
         }
-        }
+    }
 
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
+        if (roomSize == 0)
+            roomSize = 2;
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+        if(roomName == null)
+            roomName = "Room " + Random.Range(0, 1000);
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 

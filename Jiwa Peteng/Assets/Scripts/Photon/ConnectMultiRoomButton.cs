@@ -10,9 +10,6 @@ public class ConnectMultiRoomButton : MonoBehaviour
     private Text sizeText;
 
     private string roomName;
-    private int roomSize;
-    private int playerCount;
-
     public void JoinRoomOnClick()
     {
         PhotonNetwork.JoinRoom(roomName);
@@ -21,8 +18,16 @@ public class ConnectMultiRoomButton : MonoBehaviour
     internal void SetRoom(string nameInput, int sizeInput, int countInput)
     {
         roomName = nameInput;
-        roomSize = sizeInput;
-        playerCount = countInput;
+        if (countInput == sizeInput)
+        {
+            nameText.color = Color.red;
+            sizeText.color = Color.red;
+        }
+        else
+        {
+            nameText.color = new Color(0, 0.5f, 0);
+            sizeText.color = new Color(0, 0.5f, 0);
+        }
         nameText.text = nameInput;
         sizeText.text = countInput + "/" + sizeInput;
     }

@@ -4,98 +4,102 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
+namespace Jiwa.Peteng
 {
-    [SerializeField]
-    private int multiPlayerSceneIndex;
-
-    [SerializeField]
-    private GameObject lobbyPanel;
-    [SerializeField]
-    private GameObject roomPanel;
-
-    [SerializeField]
-    private GameObject startButton;
-
-    [SerializeField]
-    private Transform playersContainer;
-    [SerializeField]
-    private GameObject playerListingPrefab;
-
-    [SerializeField]
-    private Text roomNameDisplay;
-
-    void ClearPlayerListings()
+    public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
-        for(int i = playersContainer.childCount - 1; i>=0; i--)
+        [SerializeField]
+        private int multiPlayerSceneIndex;
+
+        [SerializeField]
+        private GameObject lobbyPanel;
+        [SerializeField]
+        private GameObject roomPanel;
+
+        [SerializeField]
+        private GameObject startButton;
+
+        [SerializeField]
+        private Transform playersContainer;
+        [SerializeField]
+        private GameObject playerListingPrefab;
+
+        [SerializeField]
+        private Text roomNameDisplay;
+
+
+        void ClearPlayerListings()
         {
-            Destroy(playersContainer.GetChild(i).gameObject);
+            for (int i = playersContainer.childCount - 1; i >= 0; i--)
+            {
+                Destroy(playersContainer.GetChild(i).gameObject);
+            }
         }
-    }
 
-    void ListPlayers()
-    {
-        foreach(Player player in PhotonNetwork.PlayerList)
+        void ListPlayers()
         {
-            GameObject tempListing = Instantiate(playerListingPrefab, playersContainer);
-            Text tempText = tempListing.transform.GetChild(0).GetComponent<Text>();
-            tempText.text = player.NickName;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                GameObject tempListing = Instantiate(playerListingPrefab, playersContainer);
+                Text tempText = tempListing.transform.GetChild(0).GetComponent<Text>();
+                tempText.text = player.NickName;
+            }
         }
-    }
 
-    public override void OnJoinedRoom()
-    {
-        roomPanel.SetActive(true);
-        lobbyPanel.SetActive(false);
-        roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
-        if(PhotonNetwork.IsMasterClient)
+        public override void OnJoinedRoom()
         {
-            startButton.SetActive(true);
+            roomPanel.SetActive(true);
+            lobbyPanel.SetActive(false);
+            roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                startButton.SetActive(true);
+            }
+            else
+            {
+                startButton.SetActive(false);
+            }
+            ClearPlayerListings();
+            ListPlayers();
         }
-        else
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
         {
-            startButton.SetActive(false);
+            ClearPlayerListings();
+            ListPlayers();
         }
-        ClearPlayerListings();
-        ListPlayers();
-    }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        ClearPlayerListings();
-        ListPlayers();
-    }
-
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        ClearPlayerListings();
-        ListPlayers();
-        if(PhotonNetwork.IsMasterClient)
+        public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            startButton.SetActive(true);
+            ClearPlayerListings();
+            ListPlayers();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                startButton.SetActive(true);
+            }
         }
-    }
 
-    public void StartGame()
-    {
-        if(PhotonNetwork.IsMasterClient)
+        public void StartGame()
         {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
+            }
         }
-    }
-    IEnumerator rejoinLobby()
-    {
-        yield return new WaitForSeconds(1);
-        PhotonNetwork.JoinLobby();
-    }
+        IEnumerator rejoinLobby()
+        {
+            yield return new WaitForSeconds(1);
+            PhotonNetwork.JoinLobby();
+        }
 
-    public void BackOnClick()
-    {
-        lobbyPanel.SetActive(true);
-        roomPanel.SetActive(false);
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LeaveLobby();
-        StartCoroutine(rejoinLobby());
+        public void BackOnClick()
+        {
+            lobbyPanel.SetActive(true);
+            roomPanel.SetActive(false);
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LeaveLobby();
+            StartCoroutine(rejoinLobby());
+        }
     }
 }
