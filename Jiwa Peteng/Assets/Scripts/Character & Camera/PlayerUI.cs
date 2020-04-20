@@ -7,7 +7,7 @@ using System;
 
 namespace Jiwa.Peteng
 {
-    public class PlayerUI : MonoBehaviour
+    public class PlayerUI : MonoBehaviourPunCallbacks
     {
         #region Public Fields
 
@@ -21,24 +21,21 @@ namespace Jiwa.Peteng
         private Slider playerHealthSlider;
 
         [SerializeField]
-        private GameObject _target;
-
+        private GameObject player;
 
         private PlayerManager target;
 
         #endregion
 
-        #region Public Fields
-
-        #endregion
-
-
         #region MonoBehaviour Callbacks
 
         void Awake()
         {
-            target = _target.GetComponent<PlayerManager>();
-            SetTarget();
+            target = player.GetComponent<PlayerManager>();
+            if (player.GetPhotonView().Owner.NickName == PhotonNetwork.LocalPlayer.NickName)
+                SetTarget();
+            else
+                this.gameObject.SetActive(false);
         }
 
         void Update()
@@ -59,15 +56,15 @@ namespace Jiwa.Peteng
         {
             if(playerNameText != null)
             {
-                if (!PhotonNetwork.IsConnected || PhotonNetwork.LocalPlayer.NickName == null)
+                if (!PhotonNetwork.IsConnected || player.GetPhotonView().Owner.NickName == null)
                 {
                     playerNameText.text = "Player " + UnityEngine.Random.Range(0, 1000);
                 }
                 else
                 {
-                    if (PhotonNetwork.LocalPlayer.NickName != null)
+                    if (player.GetPhotonView().Owner.NickName != null)
                     {
-                        playerNameText.text = PhotonNetwork.LocalPlayer.NickName;
+                        playerNameText.text = player.GetPhotonView().Owner.NickName;
                     }
                 }
             }

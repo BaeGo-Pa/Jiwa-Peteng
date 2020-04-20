@@ -47,11 +47,14 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Menu");
     }
 
     public void QuitGame()
     {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
         Debug.Log("Quitting game...");
         Application.Quit();
     }

@@ -15,7 +15,6 @@ namespace Jiwa.Peteng
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
 
-
         public bool Alive = true;
         #endregion
 
@@ -43,7 +42,7 @@ namespace Jiwa.Peteng
         {
             // #Important
             // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
-            if (photonView.IsMine)
+            if (photonView.IsMine || !PhotonNetwork.IsConnected)
             {
                 PlayerManager.LocalPlayerInstance = this.gameObject;
             }
@@ -54,15 +53,19 @@ namespace Jiwa.Peteng
 
         void Start()
         {
-            if (photonView.IsMine)
+            CameraWork _cameraWork = this.gameObject.GetComponent<CameraWork>();
+
+
+            if (_cameraWork != null)
             {
-                // initialize whatever you need to for the LOCAL player
-                enabled = true;
+                if (photonView.IsMine)
+                {
+                    _cameraWork.OnStartFollowing();
+                }
             }
             else
             {
-                // destroy or disable things for REMOTE players
-                enabled = false;
+                Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
             }
         }
 
@@ -78,6 +81,16 @@ namespace Jiwa.Peteng
             {
                 Health -= 0.1f * Time.deltaTime;
             }
+        }
+
+        public override void OnJoinedRoom()
+        {
+            if (photonView.IsMine)
+            {
+                Camera.main.enabled = true;
+            }
+            else
+                Camera.main.enabled = false;
         }
         #endregion
     }

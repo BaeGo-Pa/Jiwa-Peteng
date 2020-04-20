@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1830200584}
   - component: {fileID: 1830200583}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Player Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1830200582
 Transform:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830200581}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &20051568127074654
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -443,8 +443,8 @@ RectTransform:
   m_Father: {fileID: 1078278860962213833}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 8289669287697382206}
   playerHealthSlider: {fileID: 1078278861447878329}
-  _target: {fileID: 4687369414352582331}
+  player: {fileID: 4687369414352582331}
 --- !u!1 &1297641678014180000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,11 +1649,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8599544861136438440}
   - component: {fileID: 6847495732063185440}
-  - component: {fileID: 3136712729722007738}
-  - component: {fileID: 2922295732174547183}
-  - component: {fileID: 5857306142386826516}
-  - component: {fileID: 8520815812424305671}
+  - component: {fileID: -7123845970135510986}
+  - component: {fileID: 2159200791565334539}
   - component: {fileID: 209730316536053830}
+  - component: {fileID: 4961824154332399051}
+  - component: {fileID: 2922295732174547183}
+  - component: {fileID: 8520815812424305671}
   - component: {fileID: 4498296273569559819}
   - component: {fileID: 1384265100907844949}
   m_Layer: 0
@@ -1698,7 +1699,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &3136712729722007738
+--- !u!143 &-7123845970135510986
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1713,9 +1714,53 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2159200791565334539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687369414352582331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312dee90117b4d43922c62dbbb645d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+--- !u!114 &209730316536053830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687369414352582331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6fee8544eb3a741b48321a801d1a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Alive: 1
+--- !u!114 &4961824154332399051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687369414352582331}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d146f23eff5fe44aaa83242856013d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 4
+  height: 2
+  followOnStart: 1
+  smoothSpeed: 1
+  Target: {fileID: 5326511496914232429}
 --- !u!114 &2922295732174547183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,25 +1773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1b0670e0a2d3a41bb52d791dee7376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionDampTime: 0.25
---- !u!114 &5857306142386826516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687369414352582331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d146f23eff5fe44aaa83242856013d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 4
-  height: 2
-  centerOffset: {x: 0, y: 1, z: 0}
-  followOnStart: 1
-  smoothSpeed: 1
-  Target: {fileID: 5326511496914232429}
 --- !u!114 &8520815812424305671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,25 +1792,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4498296273569559819}
-  - {fileID: 209730316536053830}
   - {fileID: 1384265100907844949}
+  - {fileID: 209730316536053830}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &209730316536053830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687369414352582331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6fee8544eb3a741b48321a801d1a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 100
-  Alive: 1
 --- !u!114 &4498296273569559819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,10 +1834,10 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: Direction
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Hi
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Jump
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -3122,11 +3134,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 29
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 230
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

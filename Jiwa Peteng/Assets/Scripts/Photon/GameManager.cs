@@ -13,8 +13,6 @@ namespace Jiwa.Peteng
 
         public static GameManager Instance;
 
-
-
         void Start()
         {
             Instance = this;
@@ -29,7 +27,10 @@ namespace Jiwa.Peteng
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    Debug.Log(PhotonNetwork.LocalPlayer.NickName);
+                    GameObject myPlayer = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    myPlayer.transform.Find("Robot2").transform.Find("Player Cam").gameObject.SetActive(true);
+                    myPlayer.GetComponent<CameraWork>().enabled = true;
                 }
                 else
                 {
@@ -48,7 +49,6 @@ namespace Jiwa.Peteng
         {
             PhotonNetwork.LeaveRoom();
         }
-
         #endregion
 
 

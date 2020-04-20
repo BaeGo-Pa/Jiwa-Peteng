@@ -7,8 +7,6 @@ namespace Jiwa.Peteng
     {
         #region Private Fields
 
-        [SerializeField]
-        private float directionDampTime = .25f;
         private Animator animator;
 
         #endregion
@@ -23,37 +21,42 @@ namespace Jiwa.Peteng
             {
                 Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
             }
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!PhotonNetwork.LocalPlayer.IsLocal && PhotonNetwork.IsConnected)
-                return;
-            if (!animator)
-            {
-                return;
-            }
+            if (photonView.IsMine && animator)
+                Animate();
+            else
+                this.enabled = false;
+        }
+
+        private void Animate()
+        {
             // deal with Jumping
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             // only allow jumping if we are running.
-            if (stateInfo.IsName("Base Layer.Run"))
+            if (!stateInfo.IsName("Jump"))
             {
-                // When using trigger parameter
-                if (Input.GetKeyDown(KeyCode.Space))
+                float x = Input.GetAxis("Horizontal");
+                float z = Input.GetAxis("Vertical");
+
+                animator.SetFloat("Speed", x * x + z * z);
+
+                if (stateInfo.IsName("Base Layer.Run"))
                 {
-                    animator.SetTrigger("Jump");
+                    // When using trigger parameter
+                    if (GetComponent<CharacterController>().isGrounded && Input.GetKeyDown(KeyCode.Space))
+                    {
+                        animator.SetTrigger("Jump");
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        animator.SetFloat("Speed", 2 * (x * x + z * z));
+                    }
                 }
             }
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-            if (v < 0)
-            {
-                v = 0;
-            }
-            animator.SetFloat("Speed", h * h + v * v);
-            animator.SetFloat("Direction", h, directionDampTime, Time.deltaTime);
         }
 
         #endregion

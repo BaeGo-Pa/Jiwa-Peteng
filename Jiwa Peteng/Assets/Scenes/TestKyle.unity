@@ -376,36 +376,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 624668944296335775, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078278860595225971, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078278860595225971, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078278860959581268, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078278860959581268, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1078278860959581268, guid: 4ee4d7c285e47dd49b730b1b17388f20,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4687369414352582331, guid: 4ee4d7c285e47dd49b730b1b17388f20,
         type: 3}
       propertyPath: m_Name

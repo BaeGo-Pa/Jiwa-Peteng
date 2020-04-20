@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using Photon.Pun;
+
 
 namespace Jiwa.Peteng
 {
@@ -13,17 +15,12 @@ namespace Jiwa.Peteng
 
         [Tooltip("The distance in the local x-z plane to the target")]
         [SerializeField]
-        private float distance = 7.0f;
+        private float distance = 4.0f;
 
 
         [Tooltip("The height we want the camera to be above the target")]
         [SerializeField]
-        private float height = 3.0f;
-
-
-        [Tooltip("Allow the camera to be offseted vertically from the target, for example giving more view of the sceneray and less ground.")]
-        [SerializeField]
-        private Vector3 centerOffset = Vector3.zero;
+        private float height = 2.0f;
 
 
         [Tooltip("Set this as false if a component of a prefab being instanciated by Photon Network, and manually call OnStartFollowing() when and if needed.")]
@@ -35,8 +32,7 @@ namespace Jiwa.Peteng
         [SerializeField]
         private float smoothSpeed = 1f;
 
-        [SerializeField]
-        private Transform Target;
+        public Transform Target;
 
 
         float mouseX, mouseY;
@@ -72,7 +68,7 @@ namespace Jiwa.Peteng
         }
 
 
-        void LateUpdate()
+        void Update()
         {
             if(PauseMenu.GameIsPaused)
             {
@@ -114,7 +110,7 @@ namespace Jiwa.Peteng
         /// </summary>
         public void OnStartFollowing()
         {
-            cameraTransform = Camera.main.transform;
+            cameraTransform = transform.Find("Robot2").Find("Player Cam");
             isFollowing = true;
             // we don't smooth anything, we go straight to the right camera shot
             Cut();
@@ -141,8 +137,7 @@ namespace Jiwa.Peteng
 
             transform.LookAt(Target);
 
-            this.transform.rotation = Quaternion.Euler(0, mouseX, 0);
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+            Target.rotation = Quaternion.Euler(0, mouseX, 0);
         }
 
 
@@ -155,7 +150,6 @@ namespace Jiwa.Peteng
             cameraTransform.position = this.transform.position + this.transform.TransformVector(cameraOffset);
 
 
-            cameraTransform.LookAt(this.transform.position + centerOffset);
         }
         #endregion
     }
