@@ -32,7 +32,7 @@ namespace Jiwa.Peteng
         void Awake()
         {
             target = player.GetComponent<PlayerManager>();
-            if (player.GetPhotonView().Owner.NickName == PhotonNetwork.LocalPlayer.NickName)
+            if (!PhotonNetwork.IsConnected || player.GetPhotonView().Owner.NickName == PhotonNetwork.LocalPlayer.NickName)
                 SetTarget();
             else
                 this.gameObject.SetActive(false);

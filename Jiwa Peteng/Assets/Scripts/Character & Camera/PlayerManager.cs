@@ -45,6 +45,8 @@ namespace Jiwa.Peteng
             if (photonView.IsMine || !PhotonNetwork.IsConnected)
             {
                 PlayerManager.LocalPlayerInstance = this.gameObject;
+                transform.Find("Robot2").transform.Find("Player Cam").gameObject.SetActive(true);
+                GetComponent<CameraWork>().enabled = true;
             }
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.

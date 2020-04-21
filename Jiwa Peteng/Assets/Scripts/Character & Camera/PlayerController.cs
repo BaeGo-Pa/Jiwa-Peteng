@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if (photonView.IsMine)
+        if (!PhotonNetwork.IsConnected || photonView.IsMine)
             MovePlayer();
         else
             this.enabled = false;
@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             Vector3 direction = new Vector3(x, 0, z).normalized;
             Vector3 velocity = direction * moveSpeed * Time.deltaTime;
+            direction = transform.Find("Robot2").transform.Find("Player Cam").TransformDirection(direction);
+            direction.y = 0f;
 
             if (cc.isGrounded)
             {

@@ -26,7 +26,7 @@ namespace Jiwa.Peteng
         // Update is called once per frame
         void Update()
         {
-            if (photonView.IsMine && animator)
+            if ((!PhotonNetwork.IsConnected || photonView.IsMine) && animator)
                 Animate();
             else
                 this.enabled = false;
