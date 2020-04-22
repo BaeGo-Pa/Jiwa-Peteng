@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Jiwa.Peteng
 {
@@ -25,7 +26,7 @@ namespace Jiwa.Peteng
         private GameObject playerListingPrefab;
 
         [SerializeField]
-        private Text roomNameDisplay;
+        private TextMeshProUGUI roomNameDisplay;
 
 
         void ClearPlayerListings()
