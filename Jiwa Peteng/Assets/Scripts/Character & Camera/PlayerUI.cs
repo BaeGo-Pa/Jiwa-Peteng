@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 
 using System;
+using TMPro;
 
 namespace Jiwa.Peteng
 {
@@ -13,7 +14,7 @@ namespace Jiwa.Peteng
 
         [Tooltip("UI Text to display Player's Name")]
         [SerializeField]
-        private Text playerNameText;
+        private TextMeshProUGUI playerNameText;
 
 
         [Tooltip("UI Slider to display Player's Health")]
