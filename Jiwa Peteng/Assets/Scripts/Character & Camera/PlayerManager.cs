@@ -84,16 +84,6 @@ namespace Jiwa.Peteng
                 Health -= 0.1f * Time.deltaTime;
             }
         }
-
-        public override void OnJoinedRoom()
-        {
-            if (photonView.IsMine)
-            {
-                Camera.main.enabled = true;
-            }
-            else
-                Camera.main.enabled = false;
-        }
         #endregion
     }
 }
