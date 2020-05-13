@@ -70,11 +70,11 @@ namespace Jiwa.Peteng
 
         void Update()
         {
-            if(PauseMenu.GameIsPaused)
+            if(Inventory.inventoryIsShown || PauseMenu.GameIsPaused)
             {
                 isFollowing = false;
                 Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {

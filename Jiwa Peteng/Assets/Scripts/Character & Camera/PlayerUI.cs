@@ -21,6 +21,10 @@ namespace Jiwa.Peteng
         [SerializeField]
         private Slider playerHealthSlider;
 
+        [Tooltip("UI Slider to display Player's Armor")]
+        [SerializeField]
+        private Slider playerArmorSlider;
+
         [SerializeField]
         private GameObject player;
 
@@ -45,6 +49,11 @@ namespace Jiwa.Peteng
             {
                 playerHealthSlider.value = target.Health;
             }
+            if (playerArmorSlider != null)
+                playerArmorSlider.value = target.Armor;
+            Debug.Log("Health: " + target.Health);
+            Debug.Log("Armor: " + target.Armor);
+            Debug.Log("Attack: " + target.AttackDamage);
         }
 
 

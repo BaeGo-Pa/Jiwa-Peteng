@@ -12,10 +12,17 @@ namespace Jiwa.Peteng
         [Tooltip("The current Health of our player")]
         public float Health = 100f;
 
+
+        [Tooltip("The current Health of our player")]
+        public float Armor = 100f;
+
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
 
         public bool Alive = true;
+
+        public float AttackDamage;
+
         #endregion
 
         #region IPunObservable implementation
@@ -26,10 +33,12 @@ namespace Jiwa.Peteng
             if(stream.IsWriting)
             {
                 stream.SendNext(Health);
+                stream.SendNext(Armor);
             }
             else
             {
                 this.Health = (float)stream.ReceiveNext();
+                this.Armor = (float)stream.ReceiveNext();
             }
         }
 
@@ -83,6 +92,27 @@ namespace Jiwa.Peteng
             {
                 Health -= 0.1f * Time.deltaTime;
             }
+        }
+
+        public void Heal()
+        {
+            if (Health + 35 >= 100f)
+                Health = 100f;
+            else
+                Health = Health + 35;
+        }
+
+        public void BoostAttack()
+        {
+            AttackDamage += AttackDamage * 0.2f;
+        }
+
+        public void GiveArmor()
+        {
+            if (Armor + 15 >= 100f)
+                Armor = 100f;
+            else
+                Armor = Armor + 15;
         }
         #endregion
     }
