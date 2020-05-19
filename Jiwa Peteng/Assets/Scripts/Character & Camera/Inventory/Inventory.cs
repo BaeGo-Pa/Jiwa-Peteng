@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,95 +7,76 @@ namespace Jiwa.Peteng
 {
     public class Inventory : MonoBehaviour
     {
-        public List<Item> characterItems = new List<Item>();
-        private ItemDatabase itemDatabase;
-        private UIInventory inventoryUI;
+        private const int SLOTS = 6;
 
-        public static bool inventoryIsShown = false;
+        private List<InventorySlot> mSlots = new List<InventorySlot>();
 
-        private void Awake()
-        {
-            itemDatabase = transform.Find("Robot2").transform.Find("Player Cam").Find("Canvas").Find("ItemDatabase").gameObject.GetComponent<ItemDatabase>();
-            inventoryUI = transform.Find("Robot2").transform.Find("Player Cam").Find("Canvas").Find("InventoryPanel").gameObject.GetComponent<UIInventory>();
-            inventoryUI.gameObject.SetActive(false);
-        }
-        private void Start()
-        {
-            GiveItem("Sword");
-        }
+        public EventHandler<InventoryEventArgs> ItemAdded;
 
-        private void Update()
+        public EventHandler<InventoryEventArgs> ItemRemoved;
+
+        public EventHandler<InventoryEventArgs> ItemUsed;
+
+        public Inventory()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            for (int i = 0; i < SLOTS; i++)
             {
-                if(inventoryUI.gameObject.activeSelf)
-                {
-                    HideInventory();
-                }
-                else
-                {
-                    ShowInventory();
-                }
+                mSlots.Add(new InventorySlot(i));
             }
         }
 
-        private void ShowInventory()
+        private InventorySlot FindStackableSlot(InventoryItemBase item)
         {
-            inventoryUI.gameObject.SetActive(true);
-            inventoryIsShown = true;
-        }
-
-        private void HideInventory()
-        {
-            inventoryUI.gameObject.SetActive(false);
-            inventoryIsShown = false;
-        }
-
-        public void GiveItem(int id)
-        {
-            Item itemToAdd = itemDatabase.GetItem(id);
-            characterItems.Add(itemToAdd);
-            inventoryUI.AddNewItem(itemToAdd);
-            Debug.Log("Added item: " + itemToAdd.Name);
-        }
-
-        public void GiveItem(string itemname)
-        {
-            Item itemToAdd = itemDatabase.GetItem(itemname);
-            characterItems.Add(itemToAdd);
-            inventoryUI.AddNewItem(itemToAdd);
-            Debug.Log("Added item: " + itemToAdd.Name);
-        }
-
-        public Item CheckForItem(int id)
-        {
-            return characterItems?.Find(item => item.Id == id);
-        }
-
-        public void RemoveItem(int id)
-        {
-            Item itemToRemove = CheckForItem(id);
-            if(itemToRemove != null)
+            foreach (InventorySlot slot in mSlots)
             {
-                characterItems.Remove(itemToRemove);
-                inventoryUI.RemoveItem(itemToRemove);
-                Debug.Log("Item removed: " + itemToRemove.Name);
+                if (slot.IsStackable(item))
+                    return slot;
+            }
+            return null;
+        }
+
+        private InventorySlot FindNextEmptySlot()
+        {
+            foreach (InventorySlot slot in mSlots)
+            {
+                if (slot.IsEmpty)
+                    return slot;
+            }
+            return null;
+        }
+
+        public void AddItem(InventoryItemBase item)
+        {
+            InventorySlot freeSlot = FindStackableSlot(item);
+            if (freeSlot == null)
+            {
+                freeSlot = FindNextEmptySlot();
+            }
+            if (freeSlot != null)
+            {
+                freeSlot.AddItem(item);
+
+                if (ItemAdded != null)
+                    ItemAdded(this, new InventoryEventArgs(item));
             }
         }
 
-        public Item CheckForItem(string name)
+        internal void UseItem(InventoryItemBase item)
         {
-            return characterItems?.Find(item => item.Name == name);
+            if (ItemUsed != null)
+                ItemUsed(this, new InventoryEventArgs(item));
         }
 
-        public void RemoveItem(string name)
+        public void RemoveItem(InventoryItemBase item)
         {
-            Item itemToRemove = CheckForItem(name);
-            if (itemToRemove != null)
+            foreach(InventorySlot slot in mSlots)
             {
-                characterItems.Remove(itemToRemove);
-                inventoryUI.RemoveItem(itemToRemove);
-                Debug.Log("Item removed: " + itemToRemove.Name);
+                if (slot.Remove(item))
+                {
+                    if (ItemRemoved != null)
+                        ItemRemoved(this, new InventoryEventArgs(item));
+                    break;
+                }
             }
         }
     }

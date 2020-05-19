@@ -8,20 +8,38 @@ namespace Jiwa.Peteng
     {
 
         #region Private Fields
+        [SerializeField]
+        private int maxHealth = 100;
 
         [Tooltip("The current Health of our player")]
-        public float Health = 100f;
+        public int Health;
 
+        [SerializeField]
+        private int maxArmor = 100;
 
         [Tooltip("The current Health of our player")]
-        public float Armor = 100f;
+        public int Armor;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
 
-        public bool Alive = true;
+        private Animator animator;
 
-        public float AttackDamage;
+        private PlayerController playerController;
+
+        public bool win;
+
+        public bool Alive
+        {
+            get { return !(Health <= 0); }
+        }
+
+        public int AttackDamage = 2;
+
+        public bool IsAttacking
+        {
+            get { return animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack"); }
+        }
 
         #endregion
 
@@ -37,8 +55,8 @@ namespace Jiwa.Peteng
             }
             else
             {
-                this.Health = (float)stream.ReceiveNext();
-                this.Armor = (float)stream.ReceiveNext();
+                this.Health = (int)stream.ReceiveNext();
+                this.Armor = (int)stream.ReceiveNext();
             }
         }
 
@@ -56,6 +74,10 @@ namespace Jiwa.Peteng
                 PlayerManager.LocalPlayerInstance = this.gameObject;
                 transform.Find("Robot2").transform.Find("Player Cam").gameObject.SetActive(true);
                 GetComponent<CameraWork>().enabled = true;
+                animator = GetComponent<Animator>();
+                playerController = GetComponent<PlayerController>();
+                Health = maxHealth;
+                Armor = maxArmor;
             }
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -82,38 +104,65 @@ namespace Jiwa.Peteng
 
         void Update()
         {
-            if (Health <= 0)
-                Alive = false;
+            if (playerController.mCurrentItem != null)
+                AttackDamage =  playerController.mCurrentItem.Damage;
+            else
+                AttackDamage = 2;
+            if (Health < 0)
+                Health = 0;
+            if (Health > maxHealth)
+                Health = maxHealth;
+            if (Armor < 0)
+                Armor = 0;
+            if (Armor > maxArmor)
+                Armor = maxArmor;
         }
 
-        void OnTriggerEnter(Collider other)
+        public void TakeDamage(int amount)
         {
-            if (photonView.IsMine && other.tag.Contains("Attack"))
+            if (Armor > amount)
+                Armor -= amount;
+            else
             {
-                Health -= 0.1f * Time.deltaTime;
+                amount -= Armor;
+                if (Armor > 0)
+                    Armor = 0;
+                if (amount > 0)
+                    Health -= amount;
+            }
+            if (Health < 0)
+                Health = 0;
+
+            if (!Alive)
+            {
+                //Set trigger to animate the death animation
             }
         }
 
+
+        #region Item Effects
         public void Heal()
         {
-            if (Health + 35 >= 100f)
-                Health = 100f;
+            if (Health + 25 >= 100f)
+                Health = 100;
             else
-                Health = Health + 35;
+                Health = Health + 25;
         }
 
         public void BoostAttack()
         {
-            AttackDamage += AttackDamage * 0.2f;
+            AttackDamage += (int) (AttackDamage * 0.5f);
         }
 
         public void GiveArmor()
         {
-            if (Armor + 15 >= 100f)
-                Armor = 100f;
+            if (Armor + 30 >= 100f)
+                Armor = 100;
             else
-                Armor = Armor + 15;
+                Armor = Armor + 30;
         }
+        #endregion
+
         #endregion
     }
 }

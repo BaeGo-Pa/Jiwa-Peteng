@@ -13,22 +13,28 @@ namespace Jiwa.Peteng
         #region Public Fields
 
         [Tooltip("UI Text to display Player's Name")]
-        [SerializeField]
         private TextMeshProUGUI playerNameText;
 
 
         [Tooltip("UI Slider to display Player's Health")]
-        [SerializeField]
         private Slider playerHealthSlider;
 
+        private Text HealthText;
+
         [Tooltip("UI Slider to display Player's Armor")]
-        [SerializeField]
         private Slider playerArmorSlider;
+        private Text ArmorText;
 
         [SerializeField]
         private GameObject player;
 
         private PlayerManager target;
+
+        private GameObject DeathPanel;
+
+        private GameObject WinPanel;
+
+        private GameObject PauseMenu;
 
         #endregion
 
@@ -37,6 +43,20 @@ namespace Jiwa.Peteng
         void Awake()
         {
             target = player.GetComponent<PlayerManager>();
+
+            playerHealthSlider = transform.Find("Health Slider").GetComponent<Slider>();
+            playerArmorSlider = transform.Find("Armor Slider").GetComponent<Slider>();
+            playerNameText = playerHealthSlider.transform.Find("Player Name Text").GetComponent<TextMeshProUGUI>();
+            HealthText = playerHealthSlider.transform.Find("HealthText").GetComponent<Text>();
+            ArmorText = playerArmorSlider.transform.Find("ArmorText").GetComponent<Text>();
+
+            playerHealthSlider.minValue = 0;
+            playerArmorSlider.minValue = 0;
+
+            DeathPanel = transform.Find("DeathPanel").gameObject;
+            WinPanel = transform.Find("WinPanel").gameObject;
+            PauseMenu = transform.Find("PauseMenu").gameObject;
+
             if (!PhotonNetwork.IsConnected || player.GetPhotonView().Owner.NickName == PhotonNetwork.LocalPlayer.NickName)
                 SetTarget();
             else
@@ -48,12 +68,35 @@ namespace Jiwa.Peteng
             if(playerHealthSlider != null)
             {
                 playerHealthSlider.value = target.Health;
+                HealthText.text = target.Health.ToString();
             }
             if (playerArmorSlider != null)
+            {
                 playerArmorSlider.value = target.Armor;
-            Debug.Log("Health: " + target.Health);
-            Debug.Log("Armor: " + target.Armor);
-            Debug.Log("Attack: " + target.AttackDamage);
+                ArmorText.text = target.Armor.ToString();
+            }
+            if (!target.Alive)
+            {
+                PauseMenu.SetActive(false);
+                DeathPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                DeathPanel.SetActive(false);
+            }
+            if (target.win)
+            {
+                PauseMenu.SetActive(false);
+                WinPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                WinPanel.SetActive(false);
+            }
         }
 
 
@@ -68,7 +111,7 @@ namespace Jiwa.Peteng
             {
                 if (!PhotonNetwork.IsConnected || player.GetPhotonView().Owner.NickName == null)
                 {
-                    playerNameText.text = "Player " + UnityEngine.Random.Range(0, 1000);
+                    playerNameText.text = "Lucio";
                 }
                 else
                 {

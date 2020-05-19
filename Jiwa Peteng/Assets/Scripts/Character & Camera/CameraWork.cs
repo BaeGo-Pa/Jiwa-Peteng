@@ -24,8 +24,7 @@ namespace Jiwa.Peteng
 
 
         [Tooltip("Set this as false if a component of a prefab being instanciated by Photon Network, and manually call OnStartFollowing() when and if needed.")]
-        [SerializeField]
-        private bool followOnStart = false;
+        private bool followOnStart = true;
 
 
         [Tooltip("The Smoothing for the camera to follow the target")]
@@ -33,7 +32,6 @@ namespace Jiwa.Peteng
         private float smoothSpeed = 1f;
 
         public Transform Target;
-
 
         float mouseX, mouseY;
 
@@ -68,9 +66,9 @@ namespace Jiwa.Peteng
         }
 
 
-        void Update()
+        void LateUpdate()
         {
-            if(Inventory.inventoryIsShown || PauseMenu.GameIsPaused)
+            if(PauseMenu.GameIsPaused)
             {
                 isFollowing = false;
                 Cursor.visible = true;
@@ -79,9 +77,13 @@ namespace Jiwa.Peteng
             else
             {
                 isFollowing = true;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
+
+            if (Input.GetMouseButtonDown(1))
+                isFollowing = false;
+
             // The transform target may not destroy on level load,
             // so we need to cover corner cases where the Main Camera is different everytime we load a new scene, and reconnect when that happens
             if (cameraTransform == null && isFollowing)

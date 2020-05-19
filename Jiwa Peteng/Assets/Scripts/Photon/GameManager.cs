@@ -13,6 +13,18 @@ namespace Jiwa.Peteng
 
         public static GameManager Instance;
 
+        public static bool playersWin = false;
+
+        private GameObject[] monsters
+        {
+            get { return GameObject.FindGameObjectsWithTag("Monster"); }
+        }
+
+        private GameObject[] players
+        {
+            get { return GameObject.FindGameObjectsWithTag("Player"); }
+        }
+
         void Start()
         {
             Instance = this;
@@ -38,6 +50,17 @@ namespace Jiwa.Peteng
 
         }
 
+
+        private void Update()
+        {
+            if (monsters.Length == 0)
+            {
+                foreach(GameObject player in players)
+                {
+                    GetComponent<PlayerManager>().win = true;
+                }
+            }
+        }
         #endregion
 
 
