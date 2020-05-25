@@ -1,45 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\croqu\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\croqu\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Jiwa Peteng.-1299076304.00" t="ExcludeRecursive" />
-    <e p="C:\Users\croqu\Desktop\Projet S2\Jiwa-Peteng-master\Jiwa-Peteng-master\Jiwa Peteng" t="IncludeRecursive">
+    <e p="C:\Users\croqu\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Jiwa Peteng.-1779461241.00" t="ExcludeRecursive" />
+    <e p="C:\Users\croqu\Documents\GitHub\Jiwa-Peteng\Jiwa Peteng" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Photon" t="Include">
-          <e p="PhotonChat" t="Include">
-            <e p="Code" t="Include">
-              <e p="ChannelCreationOptions.cs" t="Include" />
-              <e p="ChannelWellKnownProperties.cs" t="Include" />
-              <e p="ChatChannel.cs" t="Include" />
-              <e p="ChatClient.cs" t="Include" />
-              <e p="ChatDisconnectCause.cs" t="Include" />
-              <e p="ChatEventCode.cs" t="Include" />
-              <e p="ChatOperationCode.cs" t="Include" />
-              <e p="ChatParameterCode.cs" t="Include" />
-              <e p="ChatPeer.cs" t="Include" />
-              <e p="ChatState.cs" t="Include" />
-              <e p="ChatUserStatus.cs" t="Include" />
-              <e p="IChatClientListener.cs" t="Include" />
-              <e p="PhotonChat.asmdef" t="Include" />
-            </e>
-            <e p="Demos" t="Include">
-              <e p="Common" t="Include">
-                <e p="EventSystemSpawner.cs" t="Include" />
-                <e p="OnStartDelete.cs" t="Include" />
-                <e p="TextButtonTransition.cs" t="Include" />
-                <e p="TextToggleIsOnTransition.cs" t="Include" />
-              </e>
-              <e p="DemoChat" t="Include">
-                <e p="ChannelSelector.cs" t="Include" />
-                <e p="ChatAppIdCheckerUI.cs" t="Include" />
-                <e p="ChatGui.cs" t="Include" />
-                <e p="FriendItem.cs" t="Include" />
-                <e p="IgnoreUiRaycastWhenInactive.cs" t="Include" />
-                <e p="NamePickGui.cs" t="Include" />
-              </e>
-            </e>
-          </e>
           <e p="PhotonLibs" t="Include">
             <e p="changes-library.txt" t="Include" />
             <e p="Photon3Unity3D.xml" t="Include" />
@@ -423,15 +390,31 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="AudioManager.cs" t="Include" />
           <e p="Character &amp; Camera" t="Include">
             <e p="CameraWork.cs" t="Include" />
+            <e p="Inventory" t="Include">
+              <e p="AttackPotion.cs" t="Include" />
+              <e p="DefensePotion.cs" t="Include" />
+              <e p="HealthPotion.cs" t="Include" />
+              <e p="HUD.cs" t="Include" />
+              <e p="Inventory.cs" t="Include" />
+              <e p="InventoryEventArgs.cs" t="Include" />
+              <e p="InventoryItemBase.cs" t="Include" />
+              <e p="InventorySlot.cs" t="Include" />
+              <e p="ItemClickHandler.cs" t="Include" />
+              <e p="ItemDragHandler.cs" t="Include" />
+              <e p="ItemDropHandler.cs" t="Include" />
+              <e p="Sword.cs" t="Include" />
+            </e>
+            <e p="MakeDamage.cs" t="Include" />
             <e p="PlayerAnimatorManager.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
             <e p="PlayerManager.cs" t="Include" />
             <e p="PlayerUI.cs" t="Include" />
           </e>
           <e p="Contrôle_ennemi.cs" t="Include" />
+          <e p="Déplacement_vol.cs" t="Include" />
+          <e p="FightEnemy.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="PauseMenu.cs" t="Include" />
           <e p="Photon" t="Include">
@@ -448,7 +431,6 @@
       <e p="Jiwa Peteng.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
-      <e p="PhotonChat.csproj" t="IncludeRecursive" />
       <e p="PhotonRealtime.csproj" t="IncludeRecursive" />
       <e p="PhotonUnityNetworking.csproj" t="IncludeRecursive" />
       <e p="PhotonUnityNetworking.Demos.csproj" t="IncludeRecursive" />

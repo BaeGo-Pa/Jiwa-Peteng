@@ -164,26 +164,26 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Postprocessing.Runtime">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -368,9 +368,6 @@
  <Reference Include="websocket-sharp">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -379,9 +376,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Users/croqu/Documents/GitHub/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.17f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
