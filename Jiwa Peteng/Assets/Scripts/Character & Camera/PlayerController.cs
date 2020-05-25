@@ -34,6 +34,9 @@ namespace Jiwa.Peteng
 
         private ParticleSystem defenseParticles;
 
+        private PlayerAnimatorManager playerAnimatorManager;
+
+
         void Start()
         {
             cc = GetComponent<CharacterController>();
@@ -47,6 +50,8 @@ namespace Jiwa.Peteng
 
             Hud = transform.Find("Robot2").Find("Player Cam").Find("Player UI").gameObject.GetComponent<HUD>();
             inventory = transform.Find("Robot2").Find("Player Cam").Find("Inventory").gameObject.GetComponent<Inventory>();
+
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             
             inventory.ItemUsed += Inventory_ItemUsed;
             inventory.ItemRemoved += Inventory_ItemRemoved;
@@ -68,7 +73,7 @@ namespace Jiwa.Peteng
                 this.enabled = false;
                 GetComponent<PlayerAnimatorManager>().enabled = false;
             }
-             
+
             //Pickup item
             if(playerManager.Alive && Input.GetKeyDown(KeyCode.E) && mItemToPickup != null)
             {
@@ -78,12 +83,16 @@ namespace Jiwa.Peteng
             }
 
             //Attack
-            if(playerManager.Alive && Input.GetMouseButtonDown(0))
+            if(playerManager.Alive && mCurrentItem != null && Input.GetMouseButtonDown(0))
             {
-                //TODO: trigger animation for attack depending on mCurrentItem
+                //trigger animation for attack depending on mCurrentItem
+                playerAnimatorManager.Attack();
             }
-
-
+             
+            if(cc.isGrounded && Input.GetKeyDown(KeyCode.Space))
+            {
+                playerAnimatorManager.Jump();
+            }
         }
         #region Inventory
         private void Inventory_ItemRemoved(object sender, InventoryEventArgs e)

@@ -23,7 +23,7 @@ namespace Jiwa.Peteng
 
         public override Vector3 weaponPosition
         {
-            get { return new Vector3(0.062f, 0.068f, 0.009f); }
+            get { return new Vector3(0.107f, 0.032f, -0.037f); }
         }
 
         public override Vector3 weaponRotation

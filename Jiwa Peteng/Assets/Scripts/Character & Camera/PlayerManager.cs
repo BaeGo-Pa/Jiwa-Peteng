@@ -8,14 +8,12 @@ namespace Jiwa.Peteng
     {
 
         #region Private Fields
-        [SerializeField]
-        private int maxHealth = 100;
+        public int maxHealth = 100;
 
         [Tooltip("The current Health of our player")]
         public int Health;
 
-        [SerializeField]
-        private int maxArmor = 100;
+        public int maxArmor = 100;
 
         [Tooltip("The current Health of our player")]
         public int Armor;
@@ -23,7 +21,7 @@ namespace Jiwa.Peteng
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
 
-        private Animator animator;
+        private PlayerAnimatorManager playerAnimatorManager;
 
         private PlayerController playerController;
 
@@ -35,11 +33,6 @@ namespace Jiwa.Peteng
         }
 
         public int AttackDamage = 2;
-
-        public bool IsAttacking
-        {
-            get { return animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack"); }
-        }
 
         #endregion
 
@@ -74,8 +67,8 @@ namespace Jiwa.Peteng
                 PlayerManager.LocalPlayerInstance = this.gameObject;
                 transform.Find("Robot2").transform.Find("Player Cam").gameObject.SetActive(true);
                 GetComponent<CameraWork>().enabled = true;
-                animator = GetComponent<Animator>();
                 playerController = GetComponent<PlayerController>();
+                playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
                 Health = maxHealth;
                 Armor = maxArmor;
             }
@@ -120,6 +113,7 @@ namespace Jiwa.Peteng
 
         public void TakeDamage(int amount)
         {
+            playerAnimatorManager.Hurt();
             if (Armor > amount)
                 Armor -= amount;
             else
@@ -132,11 +126,16 @@ namespace Jiwa.Peteng
             }
             if (Health < 0)
                 Health = 0;
-
             if (!Alive)
             {
                 //Set trigger to animate the death animation
+                playerAnimatorManager.Die();
             }
+        }
+
+        public void Resurrect()
+        {
+            Health = 1;
         }
 
 

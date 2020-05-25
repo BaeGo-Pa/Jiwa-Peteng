@@ -9,6 +9,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    private GameObject player;
+
+    private void Start()
+    {
+        player = transform.parent.parent.parent.gameObject;
+    }
 
     void Update()
     {
@@ -42,15 +48,22 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.Disconnect();
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
+        }
+        Destroy(player);
         SceneManager.LoadScene("Menu");
     }
 
     public void QuitGame()
     {
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.Disconnect();
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
+        }
         Debug.Log("Quitting game...");
         Application.Quit();
     }

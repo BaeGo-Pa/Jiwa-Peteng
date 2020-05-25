@@ -13,7 +13,11 @@ namespace Jiwa.Peteng
 
         public static GameManager Instance;
 
+        public bool gameIsFinished = false;
+
         public static bool playersWin = false;
+
+        GameObject audioSource;
 
         private GameObject[] monsters
         {
@@ -24,6 +28,21 @@ namespace Jiwa.Peteng
         {
             get { return GameObject.FindGameObjectsWithTag("Player"); }
         }
+
+        private int alivePlayers
+        {
+            get
+            {
+                int n = 0;
+                foreach (GameObject player in players)
+                {
+                    if (player.GetComponent<PlayerManager>().Alive)
+                        n++;
+                }
+                return n;
+            }
+        }
+
 
         void Start()
         {
@@ -41,6 +60,8 @@ namespace Jiwa.Peteng
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
                     Debug.Log(PhotonNetwork.LocalPlayer.NickName);
                     PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    audioSource = GameObject.FindGameObjectWithTag("Music");
+                    audioSource.GetComponent<MusicClass>().PlayMusic();
                 }
                 else
                 {
@@ -51,15 +72,24 @@ namespace Jiwa.Peteng
         }
 
 
-        private void Update()
+        private void LateUpdate()
         {
-            if (monsters.Length == 0)
+            if (players.Length != 0 && monsters.Length == 0)
             {
-                foreach(GameObject player in players)
+                foreach (GameObject player in players)
                 {
-                    GetComponent<PlayerManager>().win = true;
+                    player.GetComponent<PlayerManager>().win = true;
                 }
             }
+
+            foreach (GameObject player in players)
+            {
+                if (!player.GetComponent<PlayerManager>().Alive && alivePlayers > 0)
+                {
+                    player.GetComponent<PlayerManager>().Invoke("Resurrect", 3f);
+                }
+            }
+
         }
         #endregion
 
@@ -70,8 +100,9 @@ namespace Jiwa.Peteng
         {
             PhotonNetwork.LeaveRoom();
         }
-        #endregion
 
+        #endregion
+        
 
         #region Photon Callbacks
 

@@ -44,19 +44,28 @@ namespace Jiwa.Peteng
 
                 animator.SetFloat("Speed", x * x + z * z);
 
-                if (stateInfo.IsName("Base Layer.Run"))
-                {
-                    // When using trigger parameter
-                    if (GetComponent<CharacterController>().isGrounded && Input.GetKeyDown(KeyCode.Space))
-                    {
-                        animator.SetTrigger("Jump");
-                    }
-                    if (Input.GetKeyDown(KeyCode.LeftShift))
-                    {
-                        animator.SetFloat("Speed", 2 * (x * x + z * z));
-                    }
-                }
             }
+        }
+
+        public void Jump()
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+                animator.SetTrigger("Jump");
+        }
+
+        public void Die()
+        {
+            animator.SetTrigger("Die");
+        }
+
+        public void Hurt()
+        {
+            animator.SetTrigger("Hurt");
+        }
+
+        public void Attack()
+        {
+            animator.SetTrigger("Attack");
         }
 
         #endregion

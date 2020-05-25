@@ -67,34 +67,30 @@ namespace Jiwa.Peteng
         {
             if(playerHealthSlider != null)
             {
-                playerHealthSlider.value = target.Health;
-                HealthText.text = target.Health.ToString();
+                playerHealthSlider.value = (float) (target.Health) /(float) (target.maxHealth) * 100;
+                HealthText.text = playerHealthSlider.value + "%";
             }
             if (playerArmorSlider != null)
             {
-                playerArmorSlider.value = target.Armor;
-                ArmorText.text = target.Armor.ToString();
+                playerArmorSlider.value = (float) (target.Armor) / (float)(target.maxArmor) * 100;
+                ArmorText.text = playerArmorSlider.value + "%";
             }
             if (!target.Alive)
             {
                 PauseMenu.SetActive(false);
                 DeathPanel.SetActive(true);
-                Time.timeScale = 0f;
             }
             else
             {
-                Time.timeScale = 1f;
                 DeathPanel.SetActive(false);
             }
             if (target.win)
             {
                 PauseMenu.SetActive(false);
                 WinPanel.SetActive(true);
-                Time.timeScale = 0f;
             }
             else
             {
-                Time.timeScale = 1f;
                 WinPanel.SetActive(false);
             }
         }
