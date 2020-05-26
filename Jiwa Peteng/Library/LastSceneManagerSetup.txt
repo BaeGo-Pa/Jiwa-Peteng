@@ -1,5 +1,9 @@
 sceneSetups:
-- path: Assets/Scenes/TestKyle.unity
+<<<<<<< HEAD
+- path: "Assets/Scenes/Game \xE9gouts.unity"
+=======
+- path: Assets/Scenes/Menu.unity
+>>>>>>> parent of 3cc7892... Avec un ennemi prêt mais qui fonctionne pas
   isLoaded: 1
   isActive: 1
   isSubScene: 0

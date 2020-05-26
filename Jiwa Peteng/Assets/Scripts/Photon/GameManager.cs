@@ -61,7 +61,7 @@ namespace Jiwa.Peteng
                     Debug.Log(PhotonNetwork.LocalPlayer.NickName);
                     PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
                     audioSource = GameObject.FindGameObjectWithTag("Music");
-                    audioSource.GetComponent<MusicClass>().PlayMusic();
+                    //audioSource.GetComponent<MusicClass>().PlayMusic();
                 }
                 else
                 {
