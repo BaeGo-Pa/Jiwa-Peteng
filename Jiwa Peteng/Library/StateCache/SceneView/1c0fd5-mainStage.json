@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":false,"showSkybox":false,"showFlares":false,"showImageEffects":false,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":53.21189880371094,"y":-31.1923828125,"z":260.0558776855469},"rotation":{"x":-0.2325599640607834,"y":-0.34421274065971377,"z":0.08834466338157654,"w":-0.9053757190704346},"size":315.3147888183594,"orthographic":false}
+=======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":false,"showSkybox":false,"showFlares":false,"showImageEffects":false,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":-0.3049582242965698,"y":0.5766818523406982,"z":-0.2498917579650879},"rotation":{"x":-0.0012725923443213106,"y":0.9925733804702759,"z":0.010422399267554284,"w":0.12119463086128235},"size":5.335740566253662,"orthographic":false}
+>>>>>>> parent of 3cc7892... Avec un ennemi prêt mais qui fonctionne pas
