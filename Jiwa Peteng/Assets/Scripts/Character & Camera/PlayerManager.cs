@@ -133,6 +133,15 @@ namespace Jiwa.Peteng
             }
         }
 
+        /*private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Monster"))
+            {
+                FightEnemy enemy = collision.gameObject.GetComponent<FightEnemy>();
+                TakeDamage(enemy.damage);
+            }
+        }*/
+
         public void Resurrect()
         {
             Health = 1;

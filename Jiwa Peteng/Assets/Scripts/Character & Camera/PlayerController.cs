@@ -211,6 +211,7 @@ namespace Jiwa.Peteng
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
 
+
                 Vector3 direction = new Vector3(x, 0, z).normalized;
                 Vector3 velocity = direction * moveSpeed * Time.deltaTime;
                 direction = transform.Find("Robot2").transform.Find("Player Cam").TransformDirection(direction);
