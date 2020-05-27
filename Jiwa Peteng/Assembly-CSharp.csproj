@@ -114,7 +114,10 @@
     <Compile Include="Assets\Scripts\Character &amp; Camera\Inventory\Spear.cs" />
     <Compile Include="Assets\Scripts\Character &amp; Camera\Inventory\Sword.cs" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <Compile Include="Assets\Scripts\Character &amp; Camera\MakeDamage.cs" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <Compile Include="Assets\Scripts\Character &amp; Camera\PlayerAnimatorManager.cs" />
@@ -123,6 +126,11 @@
     <Compile Include="Assets\Scripts\Character &amp; Camera\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\Contrôle_ennemi.cs" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Assets\Scripts\enemy\Déplacement_vol.cs" />
+    <Compile Include="Assets\Scripts\enemy\FightEnemy.cs" />
+>>>>>>> Stashed changes
 =======
     <Compile Include="Assets\Scripts\enemy\Déplacement_vol.cs" />
     <Compile Include="Assets\Scripts\enemy\FightEnemy.cs" />
@@ -164,6 +172,7 @@
     <None Include="Assets\Resources\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
@@ -202,6 +211,8 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
 =======
+=======
+>>>>>>> Stashed changes
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
@@ -239,6 +250,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </Reference>
     <Reference Include="UnityEngine.AIModule">
@@ -420,6 +434,7 @@
     </Reference>
     <Reference Include="Photon3Unity3D">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
@@ -434,6 +449,8 @@
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
 =======
+=======
+>>>>>>> Stashed changes
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
@@ -447,6 +464,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </Reference>
     <Reference Include="netstandard">

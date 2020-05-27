@@ -67,6 +67,7 @@
     <None Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\Culling\Editor\PhotonUnityNetworking.Utilities.Culling.Editor.asmdef" />
     <Reference Include="UnityEditor.UI">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
@@ -78,6 +79,8 @@
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
 =======
+=======
+>>>>>>> Stashed changes
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
@@ -88,6 +91,9 @@
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </Reference>
     <Reference Include="UnityEngine.AIModule">
@@ -290,6 +296,7 @@
     </Reference>
     <Reference Include="Photon3Unity3D">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
@@ -313,6 +320,8 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/katia/Projets/Jiwa-Peteng/Jiwa Peteng/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
 =======
+=======
+>>>>>>> Stashed changes
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
@@ -335,6 +344,9 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/katia/Projets/Jiwa_Peteng/Jiwa Peteng/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </Reference>
     <Reference Include="mscorlib">
