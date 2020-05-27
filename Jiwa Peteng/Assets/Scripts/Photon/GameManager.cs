@@ -13,11 +13,11 @@ namespace Jiwa.Peteng
 
         public static GameManager Instance;
 
+        public Transform spawn;
+
         public bool gameIsFinished = false;
 
         public static bool playersWin = false;
-
-        GameObject audioSource;
 
         private GameObject[] monsters
         {
@@ -59,9 +59,7 @@ namespace Jiwa.Peteng
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
                     Debug.Log(PhotonNetwork.LocalPlayer.NickName);
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-                    audioSource = GameObject.FindGameObjectWithTag("Music");
-                    //audioSource.GetComponent<MusicClass>().PlayMusic();
+                    PhotonNetwork.Instantiate(this.playerPrefab.name, spawn.position, Quaternion.identity, 0);
                 }
                 else
                 {

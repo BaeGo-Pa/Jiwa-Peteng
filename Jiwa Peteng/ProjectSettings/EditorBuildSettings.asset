@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ConnectMultiplayer.unity
     guid: 88c2feb7f04537d4fb0bafd1bf296001
   - enabled: 1
-    path: Assets/Scenes/MultiplayerScene.unity
-    guid: b28cc19369569da479928a44b4d6f9da
+    path: Assets/Scenes/Game_Ville.unity
+    guid: 1bab602cdfa0aa44eb2d18d901880332
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: "Assets/Scenes/Game_\xE9gouts.unity"
+    guid: 0c0e5aa725ed5ae4f8dff4756641a1dd
   m_configObjects: {}

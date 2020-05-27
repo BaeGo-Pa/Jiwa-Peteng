@@ -77,8 +77,8 @@ namespace Jiwa.Peteng
             else
             {
                 isFollowing = true;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
 
             if (Input.GetMouseButtonDown(1))

@@ -133,6 +133,7 @@ namespace Jiwa.Peteng
             }
         }
 
+<<<<<<< Updated upstream
         /*private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Monster"))
@@ -141,6 +142,14 @@ namespace Jiwa.Peteng
                 TakeDamage(enemy.damage);
             }
         }*/
+=======
+        private void OnCollisionEnter(Collision collision)
+        {
+            bool isMonter  = collision.gameObject.tag == "Monster";
+            if (isMonter)
+                TakeDamage(collision.gameObject.GetComponent<FightEnemy>().damage);
+        }
+>>>>>>> Stashed changes
 
         public void Resurrect()
         {

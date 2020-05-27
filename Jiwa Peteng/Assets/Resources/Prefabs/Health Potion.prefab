@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4582307383649531309
+--- !u!1 &5148788107730911658
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 706213644391843774}
-  - component: {fileID: 8401464204918111624}
-  - component: {fileID: 2858508428220186993}
-  - component: {fileID: 5527690666820971689}
-  - component: {fileID: 5527690666820971690}
+  - component: {fileID: 8155863180100793273}
+  - component: {fileID: 897470760440252815}
+  - component: {fileID: 6866016416586052982}
+  - component: {fileID: 5733189140183785688}
+  - component: {fileID: 5448631027587085303}
   m_Layer: 0
-  m_Name: Health Potion
+  m_Name: Health_Potion1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &706213644391843774
+--- !u!4 &8155863180100793273
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582307383649531309}
+  m_GameObject: {fileID: 5148788107730911658}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -245.60742, y: 190.11647, z: 0}
+  m_LocalPosition: {x: 3.002, y: 0.453, z: 0.6706238}
   m_LocalScale: {x: 0.072743125, y: 0.07341002, z: 0.125}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8401464204918111624
+--- !u!33 &897470760440252815
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582307383649531309}
+  m_GameObject: {fileID: 5148788107730911658}
   m_Mesh: {fileID: 2534964839176971238, guid: 1b3a236846653b24dbdbdec8eb2a08df, type: 3}
---- !u!23 &2858508428220186993
+--- !u!23 &6866016416586052982
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582307383649531309}
+  m_GameObject: {fileID: 5148788107730911658}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,9 +59,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 563f4143414c10e4d9dd205443eabc91, type: 2}
-  - {fileID: 2100000, guid: 6e0a4a9ea0edd88409d848c22b2134ad, type: 2}
-  - {fileID: 2100000, guid: e7e58becc9622f84895ededf2a23f9d9, type: 2}
+  - {fileID: 9185737683893222716, guid: 1b3a236846653b24dbdbdec8eb2a08df, type: 3}
+  - {fileID: -6087771358165109452, guid: 1b3a236846653b24dbdbdec8eb2a08df, type: 3}
+  - {fileID: 4874126678125670354, guid: 1b3a236846653b24dbdbdec8eb2a08df, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,26 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5527690666820971689
+--- !u!65 &5733189140183785688
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582307383649531309}
+  m_GameObject: {fileID: 5148788107730911658}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9941713, y: 1.9941709, z: 2.6070588}
-  m_Center: {x: 0, y: -1.3872411e-14, z: 1.3394747}
---- !u!114 &5527690666820971690
+  m_Size: {x: 1.9941713, y: 1.9941709, z: 2.574674}
+  m_Center: {x: 0, y: -0.000000029802315, z: 1.3232821}
+--- !u!114 &5448631027587085303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4582307383649531309}
+  m_GameObject: {fileID: 5148788107730911658}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d6a01485ffbcf44ca24905196ff8058, type: 3}
@@ -113,7 +113,4 @@ MonoBehaviour:
   itemType: 0
   IsConsumable: 1
   Owner: {fileID: 0}
-  weaponPosition: {x: 0, y: 0, z: 0}
-  weaponRotation: {x: 0, y: 0, z: 0}
-  DropRotation: {x: 0, y: 0, z: 0}
   _Image: {fileID: 21300000, guid: 725cbe1425955264e90a2faf99f22d6a, type: 3}
